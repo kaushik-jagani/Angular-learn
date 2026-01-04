@@ -1,33 +1,76 @@
-<h1 class="title">Hello Mr. Jagani</h1>
+<!--<h1 class="title">Hello Mr. Jagani</h1>-->
 
-<table class="layout-table">
-  <thead>
-  <tr>
-    <th>Components</th>
-  </tr>
-  </thead>
+<!--<table class="layout-table">-->
+<!--  <thead>-->
+<!--  <tr>-->
+<!--    <th>Components</th>-->
+<!--  </tr>-->
+<!--  </thead>-->
 
-  <tbody>
-  <tr>
-    <td>Component-1</td>
-  </tr>
-  <tr>
-    <td><app-user></app-user></td>
-  </tr>
+<!--  <tbody>-->
+<!--  <tr>-->
+<!--    <td>Component-1</td>-->
+<!--  </tr>-->
+<!--  <tr>-->
+<!--    <td><app-user></app-user></td>-->
+<!--  </tr>-->
 
-  <tr>
-    <td>Component-2</td>
-  </tr>
-  <tr>
-    <td><app-admin></app-admin></td>
-  </tr>
-  </tbody>
-</table>
+<!--  <tr>-->
+<!--    <td>Component-2</td>-->
+<!--  </tr>-->
+<!--  <tr>-->
+<!--    <td><app-admin></app-admin></td>-->
+<!--  </tr>-->
+<!--  </tbody>-->
+<!--</table>-->
 
-<app-signale-lea>
+<!--<app-signale-lea>-->
 
-</app-signale-lea>
+<!--</app-signale-lea>-->
 
-<app-control-flow>
+<!--<app-control-flow>-->
 
-</app-control-flow>
+<!--</app-control-flow>-->
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="admin">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0"><li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" aria-current="page" routerLink="/gallary">Gallary</a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" aria-current="page" routerLink="/admin">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/control-flow">Control Flow</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/signal">Signal Learning</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/user">user Learning</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/variable-learning">variable Learning</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!--it reander activated component like if we do route admin then it open admin route it works is open the route-->
+<!--it is directive that responsible to load the activated load components-->
+<router-outlet></router-outlet>
