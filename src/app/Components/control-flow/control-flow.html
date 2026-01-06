@@ -1,0 +1,123 @@
+<p>control-flow works!</p>
+
+<!--[style] dyncamically add css-->
+@if (isLoggedIn()){
+  <p [style]="{color:fontColor}"> User loggin successfully</p>
+}@else {
+  <p [style]="{color:fontColor}"> User logout successfully</p>
+}
+
+
+<button class="btn btn-sm px-3" [ngClass]="isLoggedIn() ? 'btn-danger' : 'btn-primary'" (click)="toggleLogin()">
+  <i class="bi" [ngClass]="isLoggedIn() ? 'bi-box-arrow-right' : 'bi-box-arrow-in-right'"></i>
+  {{ isLoggedIn() ? 'Logout' : 'Login' }}
+</button>
+
+<button
+  class="btn btn-sm"
+  [class.btn-danger]="isLoggedIn()"
+  [class.btn-success]="!isLoggedIn()"
+  (click)="toggleLogin()"
+>
+  <i
+    class="bi me-1"
+    [class.bi-box-arrow-right]="isLoggedIn()"
+    [class.bi-box-arrow-in-right]="!isLoggedIn()"
+  ></i>
+
+  {{ isLoggedIn() ? 'Logout' : 'Login' }}
+</button>
+
+
+<!--directives condition of ng class -->
+<button [ngClass]="isLoggedIn() ? 'bg-success' : 'bg-danger'"></button>
+
+<!--property  binding-->
+<button [class]="isLoggedIn() ? 'bg-success' : 'bg-danger'"></button>
+<br>
+<br>
+<br>
+
+<div class="card p-3" style="max-width: 400px;">
+  <h5 class="mb-3">Add City</h5>
+
+  <!-- Input -->
+  <input
+    type="text"
+    class="form-control mb-2"
+    placeholder="Enter city name"
+    [value]="newCity()"
+    (input)="newCity.set($any($event.target).value)"
+  />
+
+  <!-- Button -->
+  <button
+    class="btn btn-sm btn-primary mb-3"
+    (click)="addCity()"
+  >
+    Add City
+  </button>
+
+  <!-- City list -->
+  <ul class="list-group">
+    @for (city of cities(); let i = $index; track city) {
+      <li class="list-group-item">
+        {{ i + 1 }}. {{ city }}
+      </li>
+    }
+  </ul>
+</div>
+
+
+<!--for loop syntex2-->
+<ul>
+  @for (city of cities(); track city) {
+    <li>{{ city }}</li>
+  }
+</ul>
+
+<div class="card p-3" style="max-width: 400px;">
+  <h5 class="mb-3">User Role Switch</h5>
+
+  <!-- Buttons -->
+  <div class="btn-group mb-3">
+    <button class="btn btn-sm btn-outline-danger" (click)="setRole('admin')">
+      Admin
+    </button>
+
+    <button class="btn btn-sm btn-outline-success" (click)="setRole('user')">
+      User
+    </button>
+
+    <button class="btn btn-sm btn-outline-secondary" (click)="setRole('guest')">
+      Guest
+    </button>
+  </div>
+
+  <!-- SWITCH BLOCK -->
+  @switch (role()) {
+
+    @case ('admin') {
+      <div class="alert alert-danger">
+        <strong>Admin Panel</strong><br>
+        You have full access.
+      </div>
+    }
+
+    @case ('user') {
+      <div class="alert alert-success">
+        <strong>User Dashboard</strong><br>
+        Limited access.
+      </div>
+    }
+
+    @default {
+      <div class="alert alert-secondary">
+        <strong>Guest View</strong><br>
+        Please login to continue.
+      </div>
+    }
+
+  }
+</div>
+

@@ -1,0 +1,72 @@
+<div class="container mt-4">
+
+  <h4 class="mb-3">Photo Gallery</h4>
+
+  @if (loading()) {
+    <div class="alert alert-info">
+      Loading photos...
+    </div>
+  } @else {
+
+    <button class="btn btn-sm btn-success mb-3" (click)="openPopup()">
+      Add Photo
+    </button>
+
+    @if (showAddPopup()) {
+      <app-add-photo (close)="closePopup()"></app-add-photo>
+    }
+
+    <div class="row g-3">
+
+      @for (photo of photos(); track photo.id) {
+        <div class="col-sm-6 col-md-4 col-lg-3">
+
+          <div class="card h-100 shadow-sm">
+            <a [href]="photo.url" target="_blank">
+              <img alt="Nothing Exist"
+                [src]="photo.thumbnailUrl"
+                class="card-img-top"
+              />
+            </a>
+
+
+            <div class="card-body">
+              <p class="card-text small">
+                {{ photo.title }}
+              </p>
+            </div>
+
+            <div class="card-footer text-muted small">
+              Album: {{ photo.albumId }} | ID: {{ photo.id }}
+            </div>
+          </div>
+
+        </div>
+      }
+
+    </div>
+
+    <!-- Pagination controls -->
+    <div class="d-flex justify-content-between align-items-center">
+      <button
+        class="btn btn-sm btn-secondary"
+        (click)="prevPage()"
+        [disabled]="currentPage() === 1"
+      >
+        Previous
+      </button>
+
+      <span class="text-muted">
+        Page {{ currentPage() }}
+      </span>
+
+      <button
+        class="btn btn-sm btn-primary"
+        (click)="nextPage()"
+      >
+        Next
+      </button>
+    </div>
+  }
+
+</div>

@@ -1,0 +1,49 @@
+<div class="modal-backdrop fade show"></div>
+
+<div class="modal d-block">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Add Photo</h5>
+      </div>
+
+      <div class="modal-body">
+
+        <input
+          class="form-control mb-2"
+          placeholder="Title"
+          [value]="title()"
+          (input)="title.set($any($event.target).value)"
+        />
+
+        <input
+          class="form-control mb-2"
+          placeholder="Image URL"
+          [value]="url()"
+          (input)="url.set($any($event.target).value)"
+        />
+
+        <input
+          class="form-control mb-2"
+          placeholder="Thumbnail URL"
+          [value]="thumbnailUrl()"
+          (input)="thumbnailUrl.set($any($event.target).value)"
+        />
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="cancel()">Cancel</button>
+        <button
+          class="btn btn-primary"
+          (click)="save()"
+          [disabled]="saving()"
+        >
+          Save
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

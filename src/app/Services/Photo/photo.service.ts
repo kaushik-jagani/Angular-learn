@@ -16,4 +16,11 @@ export class PhotoService {
   getPhotos(page: number, limit: number) {
     return this.http.get<Photo[]>( `${this.apiUrl}?_page=${page}&_limit=${limit}`);
   }
+
+  addPhoto(photo: Photo) {
+    return this.http.post<Photo>(
+      this.apiUrl,
+      photo
+    );
+  }
 }
