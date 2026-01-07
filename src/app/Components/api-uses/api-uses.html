@@ -12,10 +12,17 @@
       Add Photo
     </button>
 
+    <button class="btn btn-sm btn-success mb-3" (click)="openReactivePopup()">
+      Add Photo Reactive From
+    </button>
+
     @if (showAddPopup()) {
       <app-add-photo (close)="closePopup()"></app-add-photo>
     }
 
+    @if (showAddPopupReactive()) {
+      <app-add-photo-reactive (close)="closePopup()"></app-add-photo-reactive>
+    }
     <div class="row g-3">
 
       @for (photo of photos(); track photo.id) {

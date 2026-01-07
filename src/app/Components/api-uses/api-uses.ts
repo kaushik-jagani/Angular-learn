@@ -4,10 +4,11 @@ import {NgOptimizedImage} from '@angular/common';
 import {PhotoService} from '../../Services/Photo/photo.service';
 import {Photo} from '../../Models/photo.model';
 import {AddPhoto} from '../add-photo/add-photo';
+import {AddPhotoReactive} from '../add-photo-reactive/add-photo-reactive';
 
 @Component({
   selector: 'app-api-uses',
-  imports: [FormsModule,NgOptimizedImage,AddPhoto],
+  imports: [FormsModule,NgOptimizedImage,AddPhoto,AddPhotoReactive],
   templateUrl: './api-uses.html',
   styleUrl: './api-uses.scss',
 })
@@ -63,5 +64,16 @@ export class ApiUses implements OnInit {
 
   closePopup() {
     this.showAddPopup.set(false);
+  }
+
+  //Reactive Popup for forms saving
+  showAddPopupReactive = signal(false);
+
+  openReactivePopup() {
+    this.showAddPopupReactive.set(true);
+  }
+
+  closeReactivePopup() {
+    this.showAddPopupReactive.set(false);
   }
 }

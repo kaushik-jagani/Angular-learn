@@ -1,0 +1,35 @@
+<div class="card p-3" style="max-width: 400px;">
+  <h5 class="mb-3">Add Photo (Reactive Form)</h5>
+
+  <form [formGroup]="photoForm" (ngSubmit)="submit()">
+    <input
+      class="form-control mb-2"
+      placeholder="Title"
+      formControlName="title"
+    />
+    @if (photoForm.get('title')?.touched && photoForm.get('title')?.invalid) {
+      <small class="text-danger">Title is required</small>
+    }
+
+    <input
+      class="form-control mb-3"
+      placeholder="Thumbnail URL"
+      formControlName="thumbnailUrl"
+    />
+    @if (photoForm.get('thumbnailUrl')?.touched && photoForm.get('thumbnailUrl')?.invalid) {
+      <small class="text-danger">Thumbnail is required</small>
+    }
+
+    <input
+      class="form-control mb-3"
+      placeholder="URL"
+      formControlName="url"
+    />
+    @if (photoForm.get('url')?.touched && photoForm.get('url')?.invalid) {
+      <small class="text-danger">url is required</small>
+    }
+    <button class="btn btn-primary" type="submit">
+      Save
+    </button>
+  </form>
+</div>
